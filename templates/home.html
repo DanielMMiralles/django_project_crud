@@ -3,7 +3,9 @@
 {% block content %}
     {% if user.is_authenticated %}
         Epale {{ user.username }}!
-        <p><a href="">Log out</a></p>
+        <form action="{% url 'logout' %}" method="post"> {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
     {% else %}
         <p>No estas registrado</p>
         <a href="{% url 'login' %}">Log in</a>
